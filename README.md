@@ -31,7 +31,7 @@ To speed this up one could create a `Dictionary` that maps the amount of pages o
 The `IndexedList` provided by this library will automatically do that for you. We will start by creating a new `IndexedList`:
 
 ```csharp
-var indexedList = new IndexedList<Book>(b => b.Pages);
+var indexedList = new IndexedList<Book>(b => b.Pages, b => b.Name);
 ```
 
 In the constructor's parameters you need to specify all properties that should be indexed.
