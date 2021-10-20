@@ -36,11 +36,81 @@ var indexedList = new IndexedList<Book>(b => b.Pages);
 
 In the constructor's parameters you need to specify all properties that should be indexed.
 
-In order to retrieve the books by the created index you need to use `WhereIndexed`:
+In order to retrieve the books using the created index you need to use `WhereIndexed`:
 
 ```csharp
 foreach(Book book in indexedList.WhereIndexed(b => b.Pages, 50)) 
 {
     Console.WriteLine(book.Name);    
+}
+```
+
+## Benchmark
+
+```
+|               Method |      Mean |     Error |    StdDev |    Median |  Gen 0 | Allocated |
+|--------------------- |----------:|----------:|----------:|----------:|-------:|----------:|
+|        BenchmarkList | 75.107 us | 1.4833 us | 3.6940 us | 73.917 us |      - |      72 B |
+| BenchmarkIndexedList |  1.942 us | 0.0325 us | 0.0543 us |  1.928 us | 0.2174 |     688 B |
+
+
+```
+
+As you can see the `IndexedList` provides a roughly ~40x speedup as compared to a regular list and LINQ's `Where` operation. This comes at the cost of memory allocations which are the result of boxing operations and the underlying dictionaries.
+
+The benchmarks were conducted using the following code:
+
+```csharp
+[MemoryDiagnoser()]
+public class Benchmarks
+{
+    private IndexedList<Book> indexlist;
+    private List<Book> list;
+
+    [GlobalSetup]
+    public void Setup()
+    {
+        indexlist = new IndexedList<Book>(p => p.Pages);
+        list = new List<Book>();
+
+        Random random = new Random();
+        for (int i = 0; i < 10000; i++)
+        {
+            var book = new Book()
+            {
+                Pages = random.Next(100),
+                Name = random.Next().ToString()
+            };
+            
+            indexlist.Add(book);
+            list.Add(book);
+        }
+    }
+
+    [Benchmark]
+    public int BenchmarkList()
+    {
+        int totalPages = 0;
+        
+        foreach (var book in list.Where(p => p.Pages == 50))
+        {
+            totalPages += book.Pages;
+        }
+
+        return totalPages;
+    }
+    
+    [Benchmark]
+    public int BenchmarkIndexedList()
+    {
+        int totalPages = 0;
+        
+        foreach (var person in indexlist.WhereIndexed(p => p.Pages, 50))
+        {
+            totalPages += person.Pages;
+        }
+
+        return totalPages;
+    }
 }
 ```
