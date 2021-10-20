@@ -9,6 +9,7 @@
         <RepositoryUrl>https://github.com/nico1207/IndexedList</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageTags>list, collection, index, lookup, filter</PackageTags>
+        <PackageLicenseUrl>https://github.com/nico1207/IndexedList/blob/main/LICENSE</PackageLicenseUrl>
     </PropertyGroup>
 
 </Project>

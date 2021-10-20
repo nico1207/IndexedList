@@ -1,4 +1,10 @@
 # IndexedList
+<h3>
+
+  [![NuGet](https://img.shields.io/nuget/v/IndexedList.svg)](https://www.nuget.org/packages/IndexedList/)
+  [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
+
+</h3>
 
 This library provides a specialized collection for faster list lookups by creating dictionaries for specified properties of the list's elements. It's inspired by [this article](https://www.c-sharpcorner.com/article/indexing-in-memory-collections-for-blazing-fast-access/) by Joel Champagne.
 
@@ -113,4 +119,12 @@ public class Benchmarks
         return totalPages;
     }
 }
+```
+
+## Installation
+
+You can use this library in your project by adding the following [NuGet package](https://www.nuget.org/packages/IndexedList/):
+
+```
+Install-Package IndexedList
 ```
