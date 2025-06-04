@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# 
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexedList", "IndexedList\IndexedList.csproj", "{E4C6F556-81C6-4C86-B6B5-AD00CB0A7F89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexedList.Tests", "IndexedList.Tests\IndexedList.Tests.csproj", "{91EAE7E8-63E4-4518-9FA7-9E52EBD911B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +15,9 @@ Global
 		{E4C6F556-81C6-4C86-B6B5-AD00CB0A7F89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4C6F556-81C6-4C86-B6B5-AD00CB0A7F89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4C6F556-81C6-4C86-B6B5-AD00CB0A7F89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91EAE7E8-63E4-4518-9FA7-9E52EBD911B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91EAE7E8-63E4-4518-9FA7-9E52EBD911B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91EAE7E8-63E4-4518-9FA7-9E52EBD911B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91EAE7E8-63E4-4518-9FA7-9E52EBD911B3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
